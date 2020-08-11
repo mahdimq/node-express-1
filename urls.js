@@ -3,11 +3,17 @@ const axios = require('axios')
 const process = require('process')
 
 // Get url and remove the HTTP and other symbols
+// USING REGEX
+// const getName = (str) => {
+// 	let match = str.match(
+// 		/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)([\/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/
+// 	)
+// 	return match[3] //<-- use the third index after splitting the URL
+// }
+
+// Using SLICE
 const getName = (str) => {
-	let match = str.match(
-		/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)([\/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/
-	)
-	return match[3] //<-- use the third index after splitting the URL
+	return str.split('/').slice(2, 3) //<-- slicing array to retrive only name.abc
 }
 
 function commandLine(path) {
